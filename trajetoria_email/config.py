@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable, Optional
 
-DEFAULT_API_URL = "https://email-api.trajetoriaconsultoria.com"
+DEFAULT_API_URL = "https://email-sender.trajetoriaconsultoria.com"
 MODES = ("prod", "hml", "dev")
 
 

@@ -34,7 +34,7 @@ python -c "import trajetoria_email; print(trajetoria_email.README_PATH)"
 
 ```dotenv
 EMAIL_API_KEY=<chave do robô, gerada pelo admin>
-EMAIL_API_URL=https://email-api.trajetoriaconsultoria.com
+EMAIL_API_URL=https://email-sender.trajetoriaconsultoria.com
 ```
 
 Remetente, senha e listas de destinatários **não** ficam mais no robô: ficam no servidor
@@ -52,7 +52,7 @@ log = logging.getLogger(__name__)
 
 mail = EmailClient(EmailConfig(
     api_key=os.environ["EMAIL_API_KEY"],
-    api_base_url=os.environ.get("EMAIL_API_URL", "https://email-api.trajetoriaconsultoria.com"),
+    api_base_url=os.environ.get("EMAIL_API_URL", "https://email-sender.trajetoriaconsultoria.com"),
     mode={"PROD": "prod", "HML": "hml"}.get(os.getenv("AMBIENTE", "PROD"), "dev"),
     on_warning=lambda m: log.warning("[email] %s", m),
 ))
@@ -79,7 +79,7 @@ if not result.ok:
 | Campo | Default | Descrição |
 |---|---|---|
 | `api_key` | — | chave do robô |
-| `api_base_url` | `https://email-api.trajetoriaconsultoria.com` | URL da API |
+| `api_base_url` | `https://email-sender.trajetoriaconsultoria.com` | URL da API |
 | `mode` | `"prod"` | `prod` \| `hml` \| `dev`. Em `hml`/`dev` o **servidor** troca todos os destinatários pelo grupo `@dev` e prefixa o assunto com `[HML] `/`[DEV] ` |
 | `default_sender_profile` | `None` | perfil de remetente deste robô (senão o servidor decide) |
 | `timeout_seconds` | `60` | timeout de leitura por tentativa |

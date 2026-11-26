@@ -23,7 +23,7 @@ log = logging.getLogger("rpa")
 
 mail = EmailClient(EmailConfig(
     api_key=os.environ["EMAIL_API_KEY"],
-    api_base_url=os.environ.get("EMAIL_API_URL", "https://email-api.trajetoriaconsultoria.com"),
+    api_base_url=os.environ.get("EMAIL_API_URL", "https://email-sender.trajetoriaconsultoria.com"),
     mode={"PROD": "prod", "HML": "hml"}.get(os.getenv("AMBIENTE", "DEV"), "dev"),
     on_warning=lambda m: log.warning("[email] %s", m),
 ))

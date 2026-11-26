@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trajetoria-email"
+dynamic = ["version"]
+description = "Cliente da API de e-mail dos RPAs da Trajetória (envio com anexos, grupos, modo dev/hml, idempotência)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Trajetoria Consultoria" }]
+
+# A lib só fala HTTPS com a nossa API. Não monta MIME, não fala SMTP, não lê .env.
+dependencies = ["requests>=2.31"]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "responses>=0.25"]
+
+[tool.setuptools.dynamic]
+version = { attr = "trajetoria_email._version.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["trajetoria_email*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
